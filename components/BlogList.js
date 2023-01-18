@@ -1,10 +1,10 @@
 import Link from "next/link"
 import ReactMarkdown from "react-markdown"
-import styles from "../styles/BlogList.module.css"
+import styles from "../styles/BlogList.module.scss"
 import Image from "next/image"
 
 function truncateSummary(content) {
-  return content.slice(0, 200).trimEnd()
+  return content.slice(0, 125).trimEnd() + '...'
 }
 
 function reformatDate(fullDate) {
@@ -14,24 +14,14 @@ function reformatDate(fullDate) {
 
 const BlogList = ({ allBlogs }) => {
   return (
-    <ul>
+    <ul className={styles.bloglist}>
       {allBlogs && allBlogs.length > 1 &&
         allBlogs.map(post => (
-          <li key={post.slug}>
-            <Link href={{ pathname: `/blog/${post.slug}` }} className={styles.blog__link}>
-              <div className={styles.hero_image}>
-                <Image
-                  width={384}
-                  height={288}
-                  src={post.frontmatter.hero_image}
-                  alt={post.frontmatter.hero_image}
-                />
-              </div>
-              <div className={styles.blog__info}>
-                <h2>{post.frontmatter.title}</h2>
-                <h3>{reformatDate(post.frontmatter.date)}</h3>
-                <ReactMarkdown disallowedElements={["a"]}>{truncateSummary(post.markdownBody)}</ReactMarkdown>
-              </div>
+          <li key={post.slug} className={styles.bloglist__item}>
+            <Link href={{ pathname: `/blog/${post.slug}` }} className={styles.bloglist__link}>
+              <h2>{post.frontmatter.title}</h2>
+              {/* <h3>{reformatDate(post.frontmatter.date)}</h3> */}
+              <ReactMarkdown disallowedElements={["a"]}>{truncateSummary(post.markdownBody)}</ReactMarkdown>
             </Link>
           </li>
         ))}

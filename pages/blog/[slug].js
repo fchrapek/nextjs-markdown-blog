@@ -1,7 +1,7 @@
 import Image from "next/image"
 import matter from "gray-matter"
 import ReactMarkdown from "react-markdown"
-import styles from "../../styles/Blog.module.css"
+import styles from "../../styles/Blog.module.scss"
 import glob from "glob"
 import Layout from "../../components/Layout"
 

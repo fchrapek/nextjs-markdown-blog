@@ -1,0 +1,11 @@
+@import "breakpoints";
+
+@mixin up($up-breakpoint, $up-breakpoints: $breakpoints) {
+  @if map-has-key($up-breakpoints, $up-breakpoint) {
+    $up-breakpoint: map-get($up-breakpoints, $up-breakpoint);
+  }
+
+  @media (min-width: #{$up-breakpoint + "px"}) {
+    @content;
+  }
+}

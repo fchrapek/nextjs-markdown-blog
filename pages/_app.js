@@ -1,18 +1,14 @@
-import "../styles/globals.css"
-import { Work_Sans } from "@next/font/google"
+import "../styles/globals.scss";
+import { Space_Grotesk } from "@next/font/google"
 
 // importing the Work Sans font with
 // the Next.js 13 Font Optimization Feature
-const workSans = Work_Sans({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-})
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] })
 
 function MyApp({ Component, pageProps }) {
-  return <main className={workSans.className}>
+  return <div className={spaceGrotesk.className}>
     <Component {...pageProps} />
-  </main>
+  </div>
 }
 
 export default MyApp

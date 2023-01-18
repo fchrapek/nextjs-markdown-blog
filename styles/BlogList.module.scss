@@ -1,0 +1,19 @@
+@import "mixins";
+
+.bloglist {
+  display: grid;
+  max-width: 58rem;
+  margin: 0 auto;
+  gap: 2rem;
+
+  &__link {
+    display: block;
+    padding: 2rem;
+    background-color: var(--c-gray-600);
+    border-radius: 1.6rem;
+
+    @include up(md) {
+      padding: 3.2rem;
+    }
+  }
+}

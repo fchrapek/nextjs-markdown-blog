@@ -1,18 +1,22 @@
 import Header from "./Header"
 import Meta from './Meta'
-import styles from '../styles/Layout.module.css'
+import styles from '../styles/Layout.module.scss'
 
 export default function Layout(props) {
   return (
-    <section
-      className={styles.layout}
-    >
+    <>
       <Meta
         siteTitle={props.siteTitle}
         siteDescription={props.siteDescription}
       />
-      <Header siteTitle={props.siteTitle} />
-      <div className={styles.content}>{props.children}</div>
-    </section>
+
+      <div className={styles.layout}>
+        <Header siteTitle={props.siteTitle} />
+
+        <main className={styles.layout__container}>
+          {props.children}
+        </main>
+      </div>
+    </>
   )
 }
