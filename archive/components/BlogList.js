@@ -21,7 +21,9 @@ const BlogList = ({ allBlogs }) => {
             <Link href={{ pathname: `/blog/${post.slug}` }} className={styles.bloglist__link}>
               <h2>{post.frontmatter.title}</h2>
               {/* <h3>{reformatDate(post.frontmatter.date)}</h3> */}
-              <ReactMarkdown disallowedElements={["a"]}>{truncateSummary(post.markdownBody)}</ReactMarkdown>
+              <ReactMarkdown disallowedElements={["a"]}>
+                {truncateSummary(post.markdownBody)}
+              </ReactMarkdown>
             </Link>
           </li>
         ))}

@@ -14,14 +14,14 @@ export default function BlogTemplate({ frontmatter, markdownBody, siteTitle }) {
   return (
     <Layout siteTitle={siteTitle}>
       <article className={styles.blog}>
-        <figure className={styles.blog__hero}>
+        {/* <figure className={styles.blog__hero}>
           <Image
             width="1920"
             height="1080"
             src={frontmatter.hero_image}
             alt={`blog_hero_${frontmatter.title}`}
           />
-        </figure>
+        </figure> */}
         <div className={styles.blog__info}>
           <h1>{frontmatter.title}</h1>
           <h3>{reformatDate(frontmatter.date)}</h3>
