@@ -1,5 +1,6 @@
 import { getPostBySlug } from "../../../lib/api";
 import markdownToHtml from "../../../lib/markdownToHtml";
+import styles from "./page.module.scss";
 // import markdownStyles from "./markdown-styles.module.css";
 
 export default async function Post({ params }: { params: { slug: string } }) {
@@ -8,17 +9,19 @@ export default async function Post({ params }: { params: { slug: string } }) {
   const content = await markdownToHtml(post.content || "");
 
   return (
-    <div className="container mx-auto">
+    <article className={[styles.post, ''].join(' ')} >
       <main>
-        <div className="w-full h-16  text-white">
-          <p className="text-2xl">{post.title}</p>
-          <p className="text-gray-400">{post.author}</p>
-          <div
-            // className={markdownStyles["markdown"]}
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
-        </div>
+        <header className={styles.post__header}>
+          <h1 className={styles.post__title}>
+            {post.title}
+          </h1>
+        </header>
+        <div
+          // className={markdownStyles["markdown"]}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+
       </main>
-    </div>
+    </article>
   );
 }

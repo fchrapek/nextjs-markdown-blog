@@ -11,11 +11,9 @@ export default function Home() {
 
   return (
     <main>
-      <div className={styles.description}>
+      <div className={styles.posts}>
         {posts.map((post) => (
-          <div key={post.title}>
-            <PostPreview post={post} />
-          </div>
+          <PostPreview key={post.title} post={post} />
         ))}
       </div>
     </main>

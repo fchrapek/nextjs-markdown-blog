@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header>
-      <nav
+      {/* <nav
         role="navigation"
         aria-label="main navigation"
       >
@@ -29,7 +29,7 @@ export default function Header() {
             <NavLink href="/blog">Blog</NavLink>
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </header>
   )
 }

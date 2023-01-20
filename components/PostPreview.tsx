@@ -1,6 +1,7 @@
 // import DateFormatter from "./DateFormatter";
 import Image from "next/image";
 import Link from "next/link";
+import styles from "../styles/PostPreview.module.scss";
 
 type Items = {
   [key: string]: string;
@@ -8,9 +9,9 @@ type Items = {
 
 export default function PostPreview({ post }: { post: Items }) {
   return (
-    <div className="w-full mx-auto group">
-      <Link href={`/posts/${post.slug}`}>
-        {post?.coverImage && (
+    <article className={styles.post}>
+      <Link href={`/posts/${post.slug}`} className={styles.post__link}>
+        {/* {post?.coverImage && (
           <Image
             alt={`cover image for ${post.title}`}
             src={post.coverImage}
@@ -18,15 +19,17 @@ export default function PostPreview({ post }: { post: Items }) {
             height={400}
             style={{ width: "100%" }}
           />
-        )}
-        <div className="mt-4 space-y-2">
-          <p className="font-semibold text-xl group-hover:underline">
-            {post.title}
-          </p>
-          {/* <DateFormatter dateString={post.date} /> */}
-          <p>{post.excerpt}</p>
-        </div>
+        )} */}
+
+        <h3 className={styles.post__title}>
+          {post.title}
+        </h3>
+        {/* <DateFormatter dateString={post.date} /> */}
+
+        <p className={styles.post__excerpt}>
+          {post.excerpt}
+        </p>
       </Link>
-    </div>
+    </article>
   );
 }

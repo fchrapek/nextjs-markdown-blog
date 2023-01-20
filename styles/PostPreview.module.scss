@@ -1,15 +1,10 @@
 @import "mixins";
 
-.bloglist {
-  display: grid;
-  max-width: 58rem;
-  margin: 0 auto;
-  gap: 2rem;
-
+.post {
   &__link {
     display: block;
     padding: 2rem;
-    background-color: var(--c-gray-600);
+    background-color: rgba($color: #fff, $alpha: .9);
     border-radius: 1.6rem;
 
     @include up(md) {
