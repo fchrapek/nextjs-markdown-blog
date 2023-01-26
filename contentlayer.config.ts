@@ -1,4 +1,23 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import { ComputedFields, defineDocumentType, makeSource } from "contentlayer/source-files";
+import readingTime from "reading-time";
+
+const computedFields: ComputedFields = {
+  readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
+  slug: {
+    type: "string",
+    resolve: (doc) =>
+      doc._raw.flattenedPath.replace(/(\d{4})-(\d{2})-(\d{2})-/g, ""),
+  },
+  slugAsParams: {
+    type: "string",
+    resolve: (doc) =>
+      doc._raw.flattenedPath
+        .replace(/(\d{4})-(\d{2})-(\d{2})-/g, "")
+        .split("/")
+        .slice(1)
+        .join("/"),
+  },
+};
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -13,10 +32,10 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
-    date: {
-      type: "date",
-      required: true,
-    },
+    // date: {
+    //   type: "date",
+    //   required: true,
+    // },
     published: {
       type: "boolean",
       default: true,
@@ -47,6 +66,7 @@ export const Post = defineDocumentType(() => ({
       required: true,
     },
   },
+  computedFields,
 }));
 
 export default makeSource({

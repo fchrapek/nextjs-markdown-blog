@@ -1,0 +1,14 @@
+@import "mixins";
+
+.post {
+  &__link {
+    display: block;
+    padding: 2rem;
+    background-color: rgba($color: #fff, $alpha: .9);
+    border-radius: 1.6rem;
+
+    @include up(md) {
+      padding: 3.2rem;
+    }
+  }
+}

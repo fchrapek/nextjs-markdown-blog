@@ -1,4 +1,8 @@
-import './globals.css'
+import '../styles/globals.scss'
+import { Space_Grotesk } from "@next/font/google"
+
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] })
+
 
 export default function RootLayout({
   children,
@@ -6,13 +10,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="pl">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body className={spaceGrotesk.className}>
+        {/* <Header /> */}
+        {children}
+      </body>
     </html>
   )
 }

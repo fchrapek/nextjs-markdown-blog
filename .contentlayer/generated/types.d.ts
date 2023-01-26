@@ -15,7 +15,6 @@ export type Post = {
   type: 'Post'
   title: string
   description: string
-  date: IsoDateTimeString
   published: boolean
   cover_image: string
   cover_image_attribution_text: string
@@ -25,7 +24,9 @@ export type Post = {
   authors: string[]
   /** MDX file body */
   body: MDX
-
+  readingTime: json
+  slug: string
+  slugAsParams: string
 }  
 
 /** Nested types */
