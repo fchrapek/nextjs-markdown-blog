@@ -1,0 +1,14 @@
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  &.-narrow {
+    max-width: 60rem;
+  }
+
+  &.-full {
+    max-width: 120rem;
+  }
+}

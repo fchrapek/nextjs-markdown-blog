@@ -6,8 +6,6 @@ import { allPosts } from "contentlayer/generated";
 export default function BlogIndexPage() {
   const posts = allPosts.filter((post) => post.published)
 
-  console.log(posts)
-
   return (
     <BlogSection posts={posts} />
   );

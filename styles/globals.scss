@@ -1,4 +1,6 @@
-@import "mixins";
+@import
+  "mixins",
+  "modifiers";
 
 :root {
   --c-white: #fff;
@@ -156,13 +158,6 @@ img {
 
 .bg-post {
   background-color: rgba($color: #fff, $alpha: .9);
-}
-
-.container {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 pre {

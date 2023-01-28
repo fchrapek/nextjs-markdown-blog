@@ -1,14 +1,16 @@
 // import { clsxm } from "utils";
 
 interface IContainer {
-  fullSize?: boolean;
+  narrow?: boolean;
+  full?: boolean;
   className?: string;
   children: React.ReactNode;
   as?: React.ElementType;
 }
 
 export default function Container({
-  fullSize,
+  narrow,
+  full,
   className,
   as = "div",
   children,
@@ -16,7 +18,12 @@ export default function Container({
   const Container = as;
   return (
     <Container
-
+      className={[
+        'container',
+        className,
+        narrow ? '-narrow' : full ? '-full' : '']
+        .join(' ')
+      }
     >
       {children}
     </Container>

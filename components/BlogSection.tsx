@@ -1,40 +1,40 @@
 // import { formatDate, shimmer, toBase64 } from "utils";
 import { Post } from "contentlayer/generated";
+import styles from '../styles/BlogSection.module.scss'
 import { Container } from 'components';
 import Link from 'next/link';
 
 export default function BlogSection({ posts }: { posts: Post[] }) {
   return (
     <Container as="section">
-      <div>
+      <div className={styles.posts}>
         {posts?.length ? (
           <>
             {posts.map((p) => (
-              <div
+              <Link
                 key={p._id}
+                href={`/${p.slugAsParams}`}
+                className={styles.post}
               >
-                <Link
-                  href={`/${p.slugAsParams}`}
-                >
-                  <h2>
-                    {p.title}
-                  </h2>
-                  <p >
-                    {p.readingTime.text}
-                  </p>
-                  {p.tags?.length ? (
-                    <div>
-                      {p.tags.map((t, index) => (
-                        <span
-                          key={index}
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-                </Link>
-              </div>
+                <h2>
+                  {p.title}
+                </h2>
+                <p >
+                  {p.readingTime.text}
+                </p>
+                {p.tags?.length ? (
+                  <div>
+                    {p.tags.map((t, index) => (
+                      <span
+                        key={index}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                ) : null}
+              </Link>
+
             ))}
           </>
         ) : (
