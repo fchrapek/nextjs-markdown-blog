@@ -2,7 +2,8 @@
 
 :root {
   --c-white: #fff;
-  --c-gray-100: #f1f1f1;
+  --c-gray-100: #f9f9f9;
+  --c-gray-200: #f1f1f1;
   --c-gray-600: #302e2b;
   --c-gray-700: #27231f;
   --c-gray-800: #1b1a19;
@@ -162,4 +163,51 @@ img {
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+pre {
+  background-color: var(--c-gray-700);
+
+  & > code {
+    display: grid;
+  }
+}
+
+[data-rehype-pretty-code-fragment] code {
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+
+[data-rehype-pretty-code-fragment] .line {
+}
+
+p > [data-rehype-pretty-code-fragment] {
+}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  content: counter(line);
+  counter-increment: line;
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  color: gray;
+  text-align: right;
+}
+
+[data-rehype-pretty-code-fragment] .line--highlighted {
+}
+
+[data-rehype-pretty-code-fragment] .line-highlighted span {
+}
+
+[data-rehype-pretty-code-fragment] .word--highlighted {
+}
+
+[data-rehype-pretty-code-title] {
+}
+
+[data-rehype-pretty-code-title] ~ div > pre.pre {
+}
+
+div.code-title ~ [data-rehype-pretty-code-fragment] > div > pre.pre {
 }

@@ -1,5 +1,15 @@
-import { ComputedFields, defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  ComputedFields,
+  defineDocumentType,
+  makeSource,
+} from "contentlayer/source-files";
+import { readFileSync } from "fs";
 import readingTime from "reading-time";
+import { rehypeAccessibleEmojis } from "rehype-accessible-emojis";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 const computedFields: ComputedFields = {
   readingTime: { type: "json", resolve: (doc) => readingTime(doc.body.raw) },
@@ -32,10 +42,10 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
-    // date: {
-    //   type: "date",
-    //   required: true,
-    // },
+    date: {
+      type: "date",
+      required: true,
+    },
     published: {
       type: "boolean",
       default: true,
@@ -69,7 +79,45 @@ export const Post = defineDocumentType(() => ({
   computedFields,
 }));
 
+
+const themePath = "./assets/themes/moonlight-ii.json";
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Post]
+  documentTypes: [Post],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      rehypeAccessibleEmojis,
+      rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          theme: "poimandres",
+          // theme: JSON.parse(readFileSync(themePath, "utf-8")),
+          onVisitLine(node: any) {
+            // Prevent lines from collapsing in `display: grid` mode, and allow empty
+            // lines to be copy/pasted
+            if (node.children.length === 0) {
+              node.children = [{ type: "text", value: " " }];
+            }
+          },
+          onVisitHighlightedLine(node: any) {
+            node.properties.className.push("line--highlighted");
+          },
+          onVisitHighlightedWord(node: any) {
+            node.properties.className = ["word--highlighted"];
+          },
+        },
+      ],
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
+          },
+        },
+      ],
+    ],
+  },
 });

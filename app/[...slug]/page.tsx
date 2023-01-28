@@ -1,5 +1,5 @@
 
-import Container from "../../components/Container";
+import { Container, MDX } from 'components';
 import { allPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 // import { formatDate, shimmer, toBase64 } from "utils";
@@ -26,10 +26,12 @@ export default function SingleBlogPost({ params }: ISingleBlogPost) {
 
   return (
     <>
-
-      <Container className="">
-        {post.body.raw}
+      <Container>
+        <article>
+          <MDX code={post.body.code} />
+        </article>
       </Container>
     </>
   );
 }
+
