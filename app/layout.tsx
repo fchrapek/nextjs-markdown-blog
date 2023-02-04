@@ -5,7 +5,11 @@ import { Header } from 'components';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin', 'latin-ext'] })
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+interface IRootLayout {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: IRootLayout) {
   return (
     <html lang="pl">
       <head />

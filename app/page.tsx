@@ -25,14 +25,6 @@ export default function BlogIndexPage() {
       }
     });
 
-  console.log('start');
-
-  setTimeout(() => {
-    console.log('to serio koniec');
-  }, 0)
-
-  console.log('koniec');
-
   return (
     <>
       <Container >

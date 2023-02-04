@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Disallow: /404
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://happyspidres.pl
+
+# Sitemaps
+Sitemap: https://happyspidres.pl/sitemap.xml

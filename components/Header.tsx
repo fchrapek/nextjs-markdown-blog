@@ -20,7 +20,6 @@ export default function Header() {
       <p className={styles['site-header__tagline']}>
         Blog o web devie & web designie
       </p>
-
     </Container>
   )
 }

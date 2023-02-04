@@ -1,27 +1,29 @@
+import { site } from "config";
+
 export default function Head() {
   return (
     <>
-      <title>happySpiders - blog o web devie i web designie</title>
+      <title>{site.seo.title}</title>
       <meta charSet="utf-8" />
       <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta
         name="description"
-        content="happySpiders to blog o web devie i web designie stworzony przez Filipa Chrapka, który na codzień zawodowo zajmuje się podobnymi tematami"
+        content={site.seo.description}
       />
       <meta
         property="og:title"
-        content="happySpiders - blog o web devie i web designie"
+        content={site.seo.title}
       />
       <meta
         property="og:description"
-        content="happySpiders to blog o web devie i web designie stworzony przez Filipa Chrapka, który na codzień zawodowo zajmuje się podobnymi tematami"
+        content={site.seo.description}
       />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://happyspiders.pl/" />
       <meta property="og:image" content="https://happyspiders.pl/og.jpg" />
       <meta
         name="twitter:title"
-        content="happySpiders - blog o web devie i web designie"
+        content={site.seo.title}
       />
       <meta name="twitter:card" content="summary_large_card" />
       <meta name="twitter:site" content="@" />
