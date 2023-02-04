@@ -1,0 +1,10 @@
+@import "mixins";
+
+.site-header {
+  margin-bottom: 4rem;
+  padding-top: 2rem;
+
+  &__tagline {
+    font-size: 2rem;
+  }
+}

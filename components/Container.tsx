@@ -1,5 +1,3 @@
-// import { clsxm } from "utils";
-
 interface IContainer {
   narrow?: boolean;
   full?: boolean;

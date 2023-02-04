@@ -3,8 +3,7 @@ import { useState } from "react";
 import { BlogSection, Container } from '@/components';
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
-
-// import { compareDesc } from "date-fns";
+import styles from './page.module.scss';
 
 export default function BlogIndexPage() {
   // const posts = allPosts.filter((post) => post.published)
@@ -26,6 +25,14 @@ export default function BlogIndexPage() {
       }
     });
 
+  console.log('start');
+
+  setTimeout(() => {
+    console.log('to serio koniec');
+  }, 0)
+
+  console.log('koniec');
+
   return (
     <>
       <Container >
@@ -36,7 +43,7 @@ export default function BlogIndexPage() {
           onChange={(e) => setSearchValue(e.target.value)}
           aria-label="Wyszukaj artykuł"
           placeholder="Wyszukaj artykuł..."
-          className=""
+          className={styles['search-bar']}
         />
       </Container>
 

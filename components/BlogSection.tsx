@@ -20,7 +20,11 @@ export default function BlogSection({ posts }: { posts: Post[] }) {
                   {p.title}
                 </h2>
                 <p >
-                  {p.readingTime.text}
+                  {Math.ceil(p.readingTime.minutes)}
+                  min
+                </p>
+                <p >
+                  {p.description}
                 </p>
                 {p.tags?.length ? (
                   <div>

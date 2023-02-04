@@ -9,12 +9,14 @@
   --c-gray-600: #302e2b;
   --c-gray-700: #27231f;
   --c-gray-800: #1b1a19;
-  --c-mint-100: #a6c2bd;
+  --c-pink-100: #fffdfc;
   --c-mint-200: #d0f1ed;
   --c-heading: var(--c-gray-800);
   --c-text: var(--c-gray-700);
   font-size: 62.5%;
 }
+
+$test-var: var(--c-gray-600);
 
 *,
 *::before,
@@ -26,20 +28,22 @@ html {
   box-sizing: border-box;
 }
 
-.background-gradient {
-  position: fixed;
-  left: 0;
-  top: 0;
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
+// .background-gradient {
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   display: block;
+//   width: 100vw;
+//   height: 100vh;
+//   border: 1px solid red;
+//   z-index: -1;
 
-  rect {
-    width: 100vw;
-    height: 100vh;
-  }
-}
+//   rect {
+//     width: 100vw;
+//     height: 100vh;
+//     border: 1px solid red;
+//   }
+// }
 
 body,
 h1,
@@ -61,37 +65,51 @@ ul {
 }
 
 body {
+
   min-height: 100vh;
+  background-color: var(--c-pink-100);
+  background-attachment: fixed;
+  background-image: url("/blur-gradient.webp");
+  background-position: calc(50% + 30rem) bottom;
+  background-repeat: no-repeat;
+  background-size: 80rem;
 
-  &::after,
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+  // &::after,
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   z-index: -1;
+  // }
 
-  &::before {
-    background: var(--c-white);
-    filter: url("#noiseFilter");
-  }
+  // &::before {
+  //   background: var(--c-white);
+  //   filter: url("#noiseFilter");
+  // }
 
-  &::after {
-    background-color: hsl(178deg 71% 75% / 1);
-    background-image:
-      radial-gradient(at 41% 76%, hsl(340deg 0% 93% / 0) 0, transparent 50%),
-      radial-gradient(at 96% 21%, hsl(46deg 0% 93% / 1) 0, transparent 50%),
-      radial-gradient(at 34% 14%, hsl(204deg 0% 88% / 1) 0, transparent 50%),
-      radial-gradient(at 61% 15%, hsl(338deg 0% 88% / 1) 0, transparent 50%),
-      radial-gradient(at 12% 80%, hsl(41deg 0% 100% / 1) 0, transparent 50%),
-      radial-gradient(at 81% 48%, hsl(336deg 0% 96% / 1) 0, transparent 50%),
-      radial-gradient(at 68% 59%, hsl(346deg 0% 86% / 1) 0, transparent 50%);
-    mix-blend-mode: color-dodge;
-    opacity: .9;
-  }
+  // &::after {
+  //   background-color: hsl(178deg 71% 75% / 1);
+  //   background-image:
+  //     radial-gradient(at 41% 76%, hsl(340deg 0% 93% / 0) 0, transparent 50%),
+  //     radial-gradient(at 96% 21%, hsl(46deg 0% 93% / 1) 0, transparent 50%),
+  //     radial-gradient(at 34% 14%, hsl(204deg 0% 88% / 1) 0, transparent 50%),
+  //     radial-gradient(at 61% 15%, hsl(338deg 0% 88% / 1) 0, transparent 50%),
+  //     radial-gradient(at 12% 80%, hsl(41deg 0% 100% / 1) 0, transparent 50%),
+  //     radial-gradient(at 81% 48%, hsl(336deg 0% 96% / 1) 0, transparent 50%),
+  //     radial-gradient(at 68% 59%, hsl(346deg 0% 86% / 1) 0, transparent 50%);
+  //   mix-blend-mode: color-dodge;
+  //   opacity: .9;
+  // }
+}
+
+.logo {
+  width: 12rem;
+  height: 12rem;
+  background-color: var(--c-gray-200);
+  border-radius: 50%;
 }
 
 ol,
@@ -106,7 +124,7 @@ h4,
 h5,
 h6 {
   color: var(--c-heading);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 h1 {
@@ -154,10 +172,6 @@ p {
 img {
   height: auto;
   max-width: 100%;
-}
-
-.bg-post {
-  background-color: rgba($color: #fff, $alpha: .9);
 }
 
 pre {
