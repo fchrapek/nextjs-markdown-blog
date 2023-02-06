@@ -26,10 +26,13 @@ export default function SingleBlogPost({ params }: ISingleBlogPost) {
 
   return (
     <>
-      <Container>
-        <article>
-          <MDX code={post.body.code} />
-        </article>
+      <Container as="header">
+        <h1>
+          {post.title}
+        </h1>
+      </Container>
+      <Container as="article">
+        <MDX code={post.body.code} />
       </Container>
     </>
   );

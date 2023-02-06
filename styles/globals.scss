@@ -1,22 +1,8 @@
 @import
   "mixins",
-  "modifiers";
-
-:root {
-  --c-white: #fff;
-  --c-gray-100: #f9f9f9;
-  --c-gray-200: #f1f1f1;
-  --c-gray-600: #302e2b;
-  --c-gray-700: #27231f;
-  --c-gray-800: #1b1a19;
-  --c-pink-100: #fffdfc;
-  --c-mint-200: #d0f1ed;
-  --c-heading: var(--c-gray-800);
-  --c-text: var(--c-gray-700);
-  font-size: 62.5%;
-}
-
-$test-var: var(--c-gray-600);
+  "variables",
+  "modifiers",
+  "rehype-pretty-code";
 
 *,
 *::before,
@@ -27,23 +13,6 @@ $test-var: var(--c-gray-600);
 html {
   box-sizing: border-box;
 }
-
-// .background-gradient {
-//   position: fixed;
-//   left: 0;
-//   top: 0;
-//   display: block;
-//   width: 100vw;
-//   height: 100vh;
-//   border: 1px solid red;
-//   z-index: -1;
-
-//   rect {
-//     width: 100vw;
-//     height: 100vh;
-//     border: 1px solid red;
-//   }
-// }
 
 body,
 h1,
@@ -128,6 +97,7 @@ h6 {
 }
 
 h1 {
+  margin-bottom: 2.4rem;
   font-size: 2.8rem;
   line-height: 3.8rem;
 
@@ -138,10 +108,12 @@ h1 {
 }
 
 h2 {
+  margin-bottom: 1.6rem;
   font-size: 2.2rem;
   line-height: 3.2rem;
 
   @include up(md) {
+    margin-bottom: 2rem;
     font-size: 3rem;
     line-height: 3.8rem;
   }
@@ -162,10 +134,24 @@ a {
 }
 
 p {
+  margin-bottom: 1.6rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
   a {
     color: var(--c-text);
     text-decoration: underline;
     text-underline-offset: .2rem;
+  }
+
+  & + h2 {
+    margin-top: 2.6rem;
+
+    @include up(md) {
+      margin-top: 3.2rem;
+    }
   }
 }
 
@@ -175,48 +161,19 @@ img {
 }
 
 pre {
-  background-color: var(--c-gray-700);
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding: .8rem 1.6rem 1.6rem;
+  background-color: var(--c-gray-600);
+  border-radius: 0 0 .8rem .8rem;
+  overflow: auto;
+
+  @include up(md) {
+    margin-bottom: 4rem;
+    padding: .8rem 1.8rem 2rem;
+  }
 
   & > code {
     display: grid;
   }
-}
-
-[data-rehype-pretty-code-fragment] code {
-  counter-reset: line;
-  box-decoration-break: clone;
-}
-
-[data-rehype-pretty-code-fragment] .line {
-}
-
-p > [data-rehype-pretty-code-fragment] {
-}
-
-[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
-  content: counter(line);
-  counter-increment: line;
-  display: inline-block;
-  width: 1rem;
-  margin-right: 1rem;
-  color: gray;
-  text-align: right;
-}
-
-[data-rehype-pretty-code-fragment] .line--highlighted {
-}
-
-[data-rehype-pretty-code-fragment] .line-highlighted span {
-}
-
-[data-rehype-pretty-code-fragment] .word--highlighted {
-}
-
-[data-rehype-pretty-code-title] {
-}
-
-[data-rehype-pretty-code-title] ~ div > pre.pre {
-}
-
-div.code-title ~ [data-rehype-pretty-code-fragment] > div > pre.pre {
 }

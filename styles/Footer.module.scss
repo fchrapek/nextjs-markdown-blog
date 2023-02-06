@@ -1,0 +1,15 @@
+@import "mixins";
+
+.site-footer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  @include up(md) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  &__tagline {
+    text-align: center;
+  }
+}

@@ -1,0 +1,48 @@
+@import "variables";
+
+[data-rehype-pretty-code-fragment] {
+  counter-reset: line;
+  box-decoration-break: clone;
+
+  [data-rehype-pretty-code-title] {
+    padding: .8rem;
+    color: var(--c-gray-300);
+    background-color: var(--c-gray-700);
+    border-radius: .8rem .8rem 0 0;
+
+    @include up(md) {
+      margin-top: 4rem;
+      padding: .8rem 3rem;
+    }
+  }
+
+  [data-line-numbers] > .line::before {
+    content: counter(line);
+    counter-increment: line;
+    display: inline-block;
+    width: 2rem;
+    margin-right: 1rem;
+    color: var(--c-gray-400);
+    text-align: right;
+  }
+}
+
+[data-rehype-pretty-code-fragment] .line {}
+
+p > [data-rehype-pretty-code-fragment] {}
+
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+
+}
+
+[data-rehype-pretty-code-fragment] .line--highlighted {}
+
+[data-rehype-pretty-code-fragment] .line-highlighted span {}
+
+[data-rehype-pretty-code-fragment] .word--highlighted {}
+
+[data-rehype-pretty-code-title] {}
+
+[data-rehype-pretty-code-title] ~ div > pre.pre {}
+
+div.code-title ~ [data-rehype-pretty-code-fragment] > div > pre.pre {}

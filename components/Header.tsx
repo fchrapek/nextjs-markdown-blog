@@ -1,11 +1,3 @@
-// interface IContainer {
-//   narrow?: boolean;
-//   full?: boolean;
-//   className?: string;
-//   children: React.ReactNode;
-//   as?: React.ElementType;
-// }
-
 import { Container, Logo } from 'components';
 import styles from '../styles/Header.module.scss'
 

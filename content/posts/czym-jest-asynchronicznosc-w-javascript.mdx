@@ -1,5 +1,5 @@
 ---
-title: "Zaraz, zaraz...w zasadzie czym jest asynchronicznośc w JavaScript?"
+title: "Moment, poczekaj...w zasadzie czym jest asynchroniczność w JavaScript?"
 description: "Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisany w tym języku może wywoływać wiele działań jednocześnie. Wszystko dzięki asynchroniczność. Hmm zaraz, czym jest asynchroniczność?"
 date: "04-02-2023"
 cover_image: "https://images.pexels.com/photos/7976210/pexels-photo-7976210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -12,13 +12,29 @@ tags:
   - JavaScript
 ---
 
-# Hello World
+Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisany w tym języku doskonale radzi sobie z wieloma operacjami różnego kalibru. Wszystko dzięki asynchroniczność. Hmm zaraz, czym jest asynchroniczność?
 
-This is my first post...
-This is my first post...
-This is my first post...
+## Poza kolejką
 
-```js title="Title" showLineNumbers
-// <code> will have attributes `data-line-numbers` and
-// `data-line-numbers-max-digits="n"`
+Asynchroniczność w JavaScript polega na tym, że napisany kod wywołuje się, no….asynchronicznie, czyli poza standardową kolejką. W momencie kiedy jakaś napisana przez nas funkcja ma w sobie mechanizm wymagająca sporej ilości czasu do wykonania, pozostały kod nie musi czekać na jej zakończenia i może spokojnie działać sobie dalej.
+
+Sprawdźmy to na przykładzie (w komentarzach podana jest kolejność w jakiej wywoła się kod).
+
+```jsx title="Asynchroniczna kolejnoś wywołania kodu" showLineNumbers
+// 1
+console.log('Lecę na pierwszy ogień');
+
+// 3
+setTimeOut(() => {
+  console.log('Chłpaki, poczekajcie na mnie!');
+}, 5000)
+
+// 2
+console.log('Sory, ja nie czekam');
 ```
+
+Warto znać w jaki sposób zachowuje się asynchroniczność, ponieważ nawet jeśli ustawimy opóźnienie na 0, czyli w teorii opóźnienia być nie powinno. Powyższy kod i tak wywoła się w taki sam sposób, a zachowanie to związane jest z fundamentami języka JavaScript, konceptami takimi jak: Call Stack i Event Loop.
+
+## Asynchroniczność i Promise, czyli ziemia obiecana programisty
+
+Wiedząc, na czym polega asynchroniczność JS-a, przetestujmy kilka bardziej praktycznych przykładów.
