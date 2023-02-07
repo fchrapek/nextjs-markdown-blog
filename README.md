@@ -10,7 +10,9 @@ Run it locally:
 
 ```bash
 npm install
+
 # and then
+
 npm run dev
 ```
 

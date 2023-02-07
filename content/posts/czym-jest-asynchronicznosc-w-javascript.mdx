@@ -1,6 +1,6 @@
 ---
 title: "Moment, poczekaj...w zasadzie czym jest asynchroniczność w JavaScript?"
-description: "Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisany w tym języku może wywoływać wiele działań jednocześnie. Wszystko dzięki asynchroniczność. Hmm zaraz, czym jest asynchroniczność?"
+description: "Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisany w tym języku doskonale radzi sobie z wieloma operacjami różnego kalibru. Wszystko dzięki asynchroniczność. Hmm zaraz, czym jest asynchroniczność?"
 date: "04-02-2023"
 cover_image: "https://images.pexels.com/photos/7976210/pexels-photo-7976210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 cover_image_attribution_text: "Rodion Kutsaiev on Pexels"
@@ -12,11 +12,11 @@ tags:
   - JavaScript
 ---
 
-Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisany w tym języku doskonale radzi sobie z wieloma operacjami różnego kalibru. Wszystko dzięki asynchroniczność. Hmm zaraz, czym jest asynchroniczność?
+Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisany w tym języku doskonale radzi sobie z wieloma operacjami różnego kalibru. Wszystko dzięki asynchroniczność. Ale zaraz, czym jest asynchroniczność?
 
 ## Poza kolejką
 
-Asynchroniczność w JavaScript polega na tym, że napisany kod wywołuje się, no….asynchronicznie, czyli poza standardową kolejką. W momencie kiedy jakaś napisana przez nas funkcja ma w sobie mechanizm wymagająca sporej ilości czasu do wykonania, pozostały kod nie musi czekać na jej zakończenia i może spokojnie działać sobie dalej.
+Asynchroniczność w JavaScript polega na tym, że napisany kod wywołuje się, no cóz….asynchronicznie, czyli poza standardową kolejką. W momencie kiedy jakaś napisana przez nas funkcja ma w sobie mechanizm wymagający sporej ilości czasu do wykonania, pozostały kod nie musi czekać na jej zakończenia i może spokojnie realizowac zaprogramowane działania dalej.
 
 Sprawdźmy to na przykładzie (w komentarzach podana jest kolejność w jakiej wywoła się kod).
 
@@ -33,7 +33,7 @@ setTimeOut(() => {
 console.log('Sory, ja nie czekam');
 ```
 
-Warto znać w jaki sposób zachowuje się asynchroniczność, ponieważ nawet jeśli ustawimy opóźnienie na 0, czyli w teorii opóźnienia być nie powinno. Powyższy kod i tak wywoła się w taki sam sposób, a zachowanie to związane jest z fundamentami języka JavaScript, konceptami takimi jak: Call Stack i Event Loop.
+Warto znać w jaki sposób zachowuje się asynchroniczność. Nawet jeśli ustawimy opóźnienie na 0 (co wydaje się powinno oznaczac, ze zadnego opóźnienia być nie powinno), powyższy kod i tak wywoła się w taki sam sposób. Zachowanie to związane jest z fundamentami języka JavaScript, konceptami takimi jak: Call Stack i Event Loop.
 
 ## Asynchroniczność i Promise, czyli ziemia obiecana programisty
 
