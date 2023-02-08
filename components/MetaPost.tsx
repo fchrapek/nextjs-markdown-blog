@@ -57,7 +57,7 @@ export default function SingleBlogMeta({ params }: ISingleBlogMeta) {
         sizes="32x32"
         href="/favicons/favicon-32x32.png"
       />
-      <link rel="manifest" href="https://happyspiders.pl/favicons/site.webmanifest" />
+      <link rel="manifest" href="/favicons/site.webmanifest" />
       <link rel="canonical" href={`${url}/insights/${post.slugAsParams}`} />
     </>
   );

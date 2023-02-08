@@ -175,5 +175,17 @@ pre {
 
   & > code {
     display: grid;
+    font-size: 100%;
+    background-color: var(--c-gray-600);
+    border: none;
   }
+}
+
+code {
+  padding: .2rem .4rem;
+  color: var(--c-gray-600);
+  font-size: 85%;
+  background-color: var(--c-white);
+  border: .1rem solid var(--c-gray-200);
+  border-radius: .2rem;
 }

@@ -1,6 +1,6 @@
 ---
 title: "Moment, poczekaj...w zasadzie czym jest asynchroniczność w JavaScript?"
-description: "Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisany w tym języku doskonale radzi sobie z wieloma operacjami różnego kalibru. Wszystko dzięki asynchroniczność. Hmm zaraz, czym jest asynchroniczność?"
+description: "Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisany w tym języku doskonale radzi sobie z wieloma operacjami różnego kalibru. Wszystko dzięki asynchroniczność. Ale zaraz, czym jest asynchroniczność?"
 date: "04-02-2023"
 cover_image: "https://images.pexels.com/photos/7976210/pexels-photo-7976210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 cover_image_attribution_text: "Rodion Kutsaiev on Pexels"
@@ -16,13 +16,13 @@ Mimo tego, że JavaScript to fundamentalnie język jednowątkowy, program napisa
 
 ## Poza kolejką
 
-Asynchroniczność w JavaScript polega na tym, że napisany kod wywołuje się, no cóz….asynchronicznie, czyli poza standardową kolejką. W momencie kiedy jakaś napisana przez nas funkcja ma w sobie mechanizm wymagający sporej ilości czasu do wykonania, pozostały kod nie musi czekać na jej zakończenia i może spokojnie realizowac zaprogramowane działania dalej.
+Asynchroniczność w JavaScript polega na tym, że napisany kod wywołuje się, no cóż….asynchronicznie, czyli poza standardową kolejką. W momencie kiedy napisana przez nas funkcja ma w sobie mechanizm wymagający sporej ilości czasu do wykonania, pozostały kod nie czeka na jej zakończenia i może spokojnie realizować się dalej.
 
 Sprawdźmy to na przykładzie (w komentarzach podana jest kolejność w jakiej wywoła się kod).
 
-```jsx title="Asynchroniczna kolejnoś wywołania kodu" showLineNumbers
+```jsx title="Asynchroniczna kolejność wywołania kodu" showLineNumbers
 // 1
-console.log('Lecę na pierwszy ogień');
+console.log('Lecę na pierwszy ogień!');
 
 // 3
 setTimeOut(() => {
@@ -30,11 +30,36 @@ setTimeOut(() => {
 }, 5000)
 
 // 2
-console.log('Sory, ja nie czekam');
+console.log('Sorry, ja nie czekam :()');
 ```
 
-Warto znać w jaki sposób zachowuje się asynchroniczność. Nawet jeśli ustawimy opóźnienie na 0 (co wydaje się powinno oznaczac, ze zadnego opóźnienia być nie powinno), powyższy kod i tak wywoła się w taki sam sposób. Zachowanie to związane jest z fundamentami języka JavaScript, konceptami takimi jak: Call Stack i Event Loop.
+Warto znać w jaki sposób zachowuje się asynchroniczność. Nawet jeśli w powyższym przykładzie ustawimy opóźnienie na `0` (co na pierwszy rzut oka powinno oznaczać, że opóźnienia nie ma), powyższy kod i tak wywoła się w taki sam sposób. Zachowanie to związane jest z fundamentami języka JavaScript, konceptami takimi jak: Call Stack i Event Loop.
 
-## Asynchroniczność i Promise, czyli ziemia obiecana programisty
+## Promise you call me back?
 
-Wiedząc, na czym polega asynchroniczność JS-a, przetestujmy kilka bardziej praktycznych przykładów.
+Do obsługi asynchroniczności wykorzystywany jest `callback` czyli po prostu funkcja wywoływana przez inną funkcję. Sprawdźmy przykład poniżej.
+
+```jsx title="Wykorzystanie funkcji callback" showLineNumbers
+function downloadData(url, callback) {
+  // pobieranie danych z serwera
+  // ...
+
+  // wywołanie funkcji callback po pobraniu danych
+  callback();
+}
+
+function displayData() {
+  console.log("Dane zostały pobrane i wyświetlone");
+}
+
+downloadData("https://example.com/data.json", displayData);
+```
+
+W powyższym przykładzie funkcja `downloadData` jest wywoływana z dwoma argumentami: adresem URL i funkcją callback `displayData`. Po pobraniu danych z serwera funkcja `downloadData` wywołuje funkcję `displayData`, co powoduje wyświetlenie komunikatu "Dane zostały pobrane i wyświetlone".
+
+W momencie kiedy asynchroniczna funkcja zacznie się rozrastać i kolejne callbacki będą zależeć od siebie wzajemnie, całość zacznie niebezpiecznie zbliżać się do zjawiska, uroczo nazywanego Piekłem Callbacków (Callback Hell).
+
+Odpowiedzią na Callback Hell, jest Promise Land (huhu), u podstaw którego leży obiekt `Promise`. Obecnie koncept ten jest wspierany przez wszystkie nowoczesne przeglądarki, tak że nie będziemy skupiać się na przykładach złego kodu i skierujemy energię właśnie na obiekt `Promise`.
+
+Temat zasługuje na osobny wpis, więc zapraszam tutaj.
+
