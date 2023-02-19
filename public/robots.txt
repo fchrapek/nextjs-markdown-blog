@@ -7,7 +7,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://happyspidres.pl
+Host: https://happyspiders.pl
 
 # Sitemaps
-Sitemap: https://happyspidres.pl/sitemap.xml
+Sitemap: https://happyspiders.pl/sitemap.xml

@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "next build && next start"
+    "preview": "next build && next start",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.7",
