@@ -1,0 +1,69 @@
+---
+published: true
+title: "Promise (land), czyli ziemia obiecana asynchroniczności"
+description: "Łatwy i przyjemny sposób na obsługę asynchroniczności JavaScript, bez konieczności wielokrotnego zagnieżdżania callbacków, za to z wygodną obsługą błędów? Sign me up!"
+date: "11-02-2023"
+cover_image: ""
+cover_image_attribution_text: ""
+cover_image_attribution_link: ""
+og_image: ""
+authors:
+  - filip
+tags:
+  - js
+---
+
+Łatwy i przyjemny sposób na obsługę asynchroniczności JavaScript, bez konieczności wielokrotnego zagnieżdżania callbacków, za to z wygodną obsługą błędów? Sign me up!
+
+## Asynchroniczność zależna
+
+Ogromną zaletą i kodu asynchronicznego w JavaScript jest jego [*nieblokująca* natura](https://happyspiders.pl/czym-jest-asynchronicznosc-w-javascript).
+
+Co jednak jeśli jakieś dalsze działania zależą od wcześniej rozpoczętej, asynchronicznej funkcji? Nie wiadomo do końca kiedy dokładnie asynchroniczna funkcja zrealizuje swoje zadanie.
+
+```jsx title="Problem z dostępnością zmiennej podczas obsługi asymchroniczności" showLineNumbers
+let jakiesDane = pobierzJakiesDane(); //funkcja asynchroniczna
+document.body.innerText(jakiesDane); //undefined
+
+function pobierzJakiesDane() {
+	// dla uproszczenia symulujemy pobieranie przez setTimeOut
+	setTimeout(() => {
+		jakiesDane = 'maszTutajDane';
+	}, 1000)
+}
+```
+
+Początkowo `jakiesDane` nie będzie dostępne, ponieważ zaprogramowane działanie wykona się zaraz po wywołaniu funkcji `pobierzJakiesDane()` (zgodnie z konceptem asynchroniczności).
+
+Rozwiązaniem mogłoby być przypisanie zmiennej wewnątrz funkcji, natomiast aby wykonać cokolwiek bardziej praktycznego i bardziej rozbudowanego, zmuszeni bylibyśmy do napisania wszystkiego wewnątrz funkcji `jakiesDane` co nie jest najlepszym rozwiązaniem.
+
+## Ej, obiecałeś!
+
+Receptą na asynchroniczny ból głowy jest `Promise`, czyli obiekt, który jest pewną…obietnicą wykonania akcji.
+
+Teraz w sposobie obsługi asynchroniczności udział biorą dwie strony:
+
+- strona, które obiecuje - nazwijmy ją Nadawca obietnicy
+- strona, do której kierowana jest obietnica - Odbiorca obietnicy
+
+Technicznie rzecz biorąc, Nadawca to funkcja, która tworzy i zwraca obiekt Promise. Odbiorca natomiast, to funkcja, która wywołuje funkcję Nadawcy i wykonuje jakieś akcję na otrzymanych przez Nadawcę danych
+
+Nadawca
+
+```jsx title="Funkcja Nadawcy" showLineNumbers
+function pobierzJakiesDane() {
+	return new Promise(function(resolve, reject) {
+		setTimeout(() => {
+			resolve('otrzymałem dane')
+		}, 1000
+	})
+}
+```
+
+Odbiorca ma dostępnych kilka metod, z czego najbardziej interesuje nas `then` , która wywoływana jest kiedy obietnica zostanie pomyślnie zrealizowana.
+
+```jsx title="Funkcja Odbiorcy" showLineNumbers
+  ...
+```
+
+Cały koncept w praktyczy sposbó opisują chłopaki z kanału Promise i asynchroniczność - Podstawy JavaScript, więc bez zbędnego powtarzana się zapraszam do [ich filmu](https://www.youtube.com/watch?v=K2G5aB5eWOk) (tylko niecałe 7 minut).

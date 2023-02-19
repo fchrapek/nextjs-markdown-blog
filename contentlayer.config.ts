@@ -52,15 +52,15 @@ export const Post = defineDocumentType(() => ({
     },
     cover_image: {
       type: "string",
-      required: true,
+      required: false,
     },
     cover_image_attribution_text: {
       type: "string",
-      required: true,
+      required: false,
     },
     cover_image_attribution_link: {
       type: "string",
-      required: true,
+      required: false,
     },
     og_image: {
       type: "string",

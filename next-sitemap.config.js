@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: "https://happyspidres.pl",
+  siteUrl: "https://happyspiders.pl",
   exclude: ["/404"],
   generateRobotsTxt: true,
   robotsTxtOptions: {
